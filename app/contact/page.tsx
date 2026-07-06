@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact - Get AI Powers",
   description:
-    "Book a 30-minute Claude Readiness Session with George Cairns to find where Claude can hand your team its hours back.",
+    "Book a 30-minute Claude Quick Wins Session with George Cairns to find where Claude can hand your team its hours back.",
 };
 
 /**
@@ -19,7 +19,7 @@ export default function Page() {
       <section className="mx-auto max-w-editorial px-6 py-16 sm:py-20">
         <p className="eyebrow text-gaip-black">Contact</p>
         <h1 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
-          Book a Claude Readiness Session.
+          Book a Claude Quick Wins Session.
         </h1>
         <p className="mt-6 max-w-prose font-body text-lg text-gaip-black/80">
           30 minutes with George. We&rsquo;ll look at where Claude can hand
@@ -27,11 +27,13 @@ export default function Page() {
           to find out if we can help.
         </p>
 
-        {/* George: this embeds the "Claude - Quick Wins" 30-min event. Confirm or replace with a dedicated Claude Readiness Session event type. */}
+        {/* EVENT SWAP POINT: this embeds the Calendly "Claude - Quick Wins" 30-min event.
+            If George creates a dedicated Claude Readiness Session event type later,
+            change the iframe src slug below and relabel the CTAs site-wide. */}
         <div className="mt-10 border border-gaip-black">
           <iframe
             src="https://calendly.com/george-cairns-getaipowers/claude-quick-wins?hide_gdpr_banner=1"
-            title="Book a Claude Readiness Session with George Cairns"
+            title="Book a Claude Quick Wins Session with George Cairns"
             width="100%"
             style={{ minHeight: "760px", border: "none", display: "block" }}
             loading="lazy"

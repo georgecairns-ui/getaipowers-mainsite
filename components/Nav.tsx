@@ -73,7 +73,7 @@ export default function Nav() {
           href="/contact"
           className="hidden bg-gaip-black px-5 py-3 font-body text-sm text-gaip-white transition-colors duration-200 hover:bg-gaip-teal lg:inline-block"
         >
-          Book a Claude Readiness Session
+          Book a Claude Quick Wins Session
         </Link>
 
         <button
@@ -117,7 +117,7 @@ export default function Nav() {
               onClick={() => setIsOpen(false)}
               className="mt-4 bg-gaip-black px-6 py-4 font-body text-base text-gaip-white transition-colors duration-200 hover:bg-gaip-teal"
             >
-              Book a Claude Readiness Session
+              Book a Claude Quick Wins Session
             </Link>
           </div>
         )}

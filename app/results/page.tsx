@@ -78,7 +78,7 @@ export default function Page() {
             href="/contact"
             className="mt-8 inline-block bg-gaip-black px-8 py-4 font-body text-base text-gaip-white transition-colors duration-200 hover:bg-gaip-teal"
           >
-            Book a Claude Readiness Session
+            Book a Claude Quick Wins Session
           </Link>
         </div>
       </ScrollReveal>

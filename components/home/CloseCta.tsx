@@ -33,7 +33,7 @@ export default function CloseCta() {
                   href="/contact"
                   className="inline-block bg-gaip-white px-7 py-4 font-body text-sm font-medium text-gaip-black transition-colors duration-200 hover:bg-gaip-teal hover:text-gaip-white"
                 >
-                  Book a Claude Readiness Session
+                  Book a Claude Quick Wins Session
                 </Link>
               </div>
             </div>

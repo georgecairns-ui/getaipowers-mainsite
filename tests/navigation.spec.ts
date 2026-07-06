@@ -24,14 +24,14 @@ test.describe("Primary navigation", () => {
     });
   }
 
-  test('the nav CTA "Book a Claude Readiness Session" leads to /contact', async ({
+  test('the nav CTA "Book a Claude Quick Wins Session" leads to /contact', async ({
     page,
   }) => {
     await page.goto("/");
 
     await page
       .locator("header")
-      .getByRole("link", { name: "Book a Claude Readiness Session" })
+      .getByRole("link", { name: "Book a Claude Quick Wins Session" })
       .click();
 
     await expect(page).toHaveURL(/\/contact$/);
