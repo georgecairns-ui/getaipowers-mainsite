@@ -16,7 +16,7 @@ The Get AI Powers agency website: a premium editorial magazine site with comic a
 - Test: `npx playwright test`
 - Lint: `npm run lint`
 - Build: `npm run build`
-- Deploy: `npx vercel pull --yes --environment production && npx vercel build --prod --yes && npx vercel deploy --prebuilt --prod --yes` (remote builds hang on this account; always use the prebuilt flow). Vercel project is not git-connected yet; pushing deploys nothing until it is. GitHub repo (pending creation by George): getaipowers-main, private.
+- Deploy: push to main; the GitHub repo github.com/georgecairns-ui/getaipowers-mainsite is connected to Vercel project getaipowers-main, so every push redeploys automatically. If remote builds ever hang (they do on this account for the claudecofounder.com project), fall back to the prebuilt flow: `npx vercel pull --yes --environment production && npx vercel build --prod --yes && npx vercel deploy --prebuilt --prod --yes`.
 
 # Rules for this repo
 
