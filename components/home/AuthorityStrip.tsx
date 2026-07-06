@@ -1,4 +1,5 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import ElectricBorder from "@/components/ElectricBorder";
 
 const PARTNER_BADGES = [
   "Anthropic certification",
@@ -71,24 +72,28 @@ export default function AuthorityStrip() {
         </div>
 
         {/* Video slot as a bold comic panel. */}
-        <ScrollReveal
-          variant="panel"
-          delay={0.15}
-          className="comic-panel-bold relative mt-16 flex aspect-video w-full items-center justify-center"
-        >
-          <div className="flex flex-col items-center gap-4 px-6 text-center">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-10 w-10 fill-gaip-black"
-              aria-hidden="true"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <p className="font-mono text-xs uppercase tracking-wider text-gaip-black/70">
-              Video: George, 90 seconds on getting people off the computer
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="mt-16">
+          <ElectricBorder color="#00B0BE" speed={1} chaos={0.12} thickness={2}>
+          <ScrollReveal
+            variant="panel"
+            delay={0.15}
+            className="comic-panel-bold relative flex aspect-video w-full items-center justify-center"
+          >
+            <div className="flex flex-col items-center gap-4 px-6 text-center">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-10 w-10 fill-gaip-black"
+                aria-hidden="true"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <p className="font-mono text-xs uppercase tracking-wider text-gaip-black/70">
+                Video: George, 90 seconds on getting people off the computer
+              </p>
+            </div>
+          </ScrollReveal>
+          </ElectricBorder>
+        </div>
       </div>
     </section>
   );
