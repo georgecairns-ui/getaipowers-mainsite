@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import IssueHeader from "@/components/ui/IssueHeader";
 
 export const metadata: Metadata = {
@@ -23,10 +24,24 @@ export default function Page() {
         no="No. 6"
       />
       <section className="mx-auto max-w-editorial px-6 py-16 sm:py-20">
-        <p className="eyebrow text-gaip-black">Contact</p>
-        <h1 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
-          Book a Claude Quick Wins Session.
-        </h1>
+        <div className="flex items-center gap-4">
+          <div>
+            <p className="eyebrow text-gaip-black">Contact</p>
+            <h1 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
+              Book a Claude Quick Wins Session.
+            </h1>
+          </div>
+          {/* Small welcome accent, no animation, so the page stays fast. */}
+          <div className="w-16 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-1.5 sm:w-20">
+            <Image
+              src="/assets/claymation/claude-character-welcome.png"
+              alt="Claude character waving hello, welcoming you in"
+              width={160}
+              height={160}
+              className="h-auto w-full rounded-lg"
+            />
+          </div>
+        </div>
         <div
           aria-hidden="true"
           className="benday-duo mt-6 h-3 w-full max-w-prose"

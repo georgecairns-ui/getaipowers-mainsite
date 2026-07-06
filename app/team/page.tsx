@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import IssueHeader from "@/components/ui/IssueHeader";
@@ -115,6 +116,24 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Claude celebrating the team, after the grid. Warm cream/charcoal
+          clay-world card, decorative, no new copy. */}
+      <ScrollReveal as="section">
+        <div className="mx-auto max-w-editorial px-6 py-16 md:py-20">
+          <div className="flex justify-center">
+            <div className="w-24 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-2 sm:w-28">
+              <Image
+                src="/assets/claymation/claude-character-celebration.png"
+                alt="Claude character celebrating with arms raised"
+                width={256}
+                height={256}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </ScrollReveal>

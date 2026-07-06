@@ -91,14 +91,16 @@ export default function Page() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1} className="flex justify-center lg:justify-end">
-            <Image
-              src="/assets/claymation/claude-character-welcome.png"
-              alt="Claude character welcoming you"
-              width={320}
-              height={320}
-              className="h-auto w-full max-w-[240px] sm:max-w-xs"
-              priority
-            />
+            <div className="w-full max-w-[240px] rounded-3xl border-2 border-cofounder-charcoal bg-cofounder-cream p-4 sm:max-w-xs">
+              <Image
+                src="/assets/claymation/claude-character-welcome.png"
+                alt="Claude character waving hello, welcoming you in"
+                width={320}
+                height={320}
+                className="h-auto w-full rounded-2xl"
+                priority
+              />
+            </div>
           </ScrollReveal>
         </div>
       </section>

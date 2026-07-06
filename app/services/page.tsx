@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import CinematicPanel from "@/components/ui/CinematicPanel";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import IssueHeader from "@/components/ui/IssueHeader";
-import Starburst from "@/components/ui/Starburst";
 import {
   BrainIcon,
   LightningIcon,
@@ -151,27 +151,19 @@ export default function Page() {
 
       {/* Cinematic splash panel */}
       <section className="mx-auto max-w-editorial px-6 pb-16 md:pb-20">
-        <div className="relative">
-          <ScrollReveal
-            variant="panel"
-            finalRotate={-1}
-            shadowColor="#000000"
-            className="comic-panel-bold relative overflow-hidden"
-          >
-            <CinematicPanel
-              videoSrc="/assets/higgsfield/squad-loop.mp4"
-              posterSrc="/assets/higgsfield/squad-poster.jpg"
-              alt="The Get AI Powers team striding through a wall of broken monitors, comic style"
-              className="w-full"
-            />
-          </ScrollReveal>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-4 -top-4 z-10 rotate-12 sm:-right-6 sm:-top-6"
-          >
-            <Starburst size={72} colour="yellow" animate={false} />
-          </div>
-        </div>
+        <ScrollReveal
+          variant="panel"
+          finalRotate={-1}
+          shadowColor="#000000"
+          className="comic-panel-bold relative overflow-hidden"
+        >
+          <CinematicPanel
+            videoSrc="/assets/higgsfield/squad-loop.mp4"
+            posterSrc="/assets/higgsfield/squad-poster.jpg"
+            alt="The Get AI Powers team striding through a wall of broken monitors, comic style"
+            className="w-full"
+          />
+        </ScrollReveal>
       </section>
 
       {/* Why teams need it */}
@@ -313,9 +305,20 @@ export default function Page() {
           </p>
 
           {/* Outcomes */}
-          <h3 className="mt-16 font-display text-2xl font-semibold text-gaip-black">
-            What done looks like.
-          </h3>
+          <div className="mt-16 flex items-center gap-6">
+            <h3 className="font-display text-2xl font-semibold text-gaip-black">
+              What done looks like.
+            </h3>
+            <div className="w-16 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-1.5 sm:w-20">
+              <Image
+                src="/assets/claymation/claude-character-correct.png"
+                alt="Claude character giving a thumbs up"
+                width={200}
+                height={200}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
+          </div>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {OUTCOMES.map((body) => (
               <div key={body} className="flex gap-4">
@@ -345,9 +348,27 @@ export default function Page() {
         className="bg-cofounder-cream text-cofounder-charcoal"
       >
         <div className="mx-auto max-w-editorial px-6 py-16 md:py-24">
-          <p className="eyebrow text-cofounder-ink-soft">FOR INDIVIDUALS</p>
-          <div className="narration-box mt-4 inline-block px-4 py-2 text-xs text-cofounder-charcoal">
-            Chapter / For Individuals
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="eyebrow text-cofounder-ink-soft">
+                FOR INDIVIDUALS
+              </p>
+              <div className="narration-box mt-4 inline-block px-4 py-2 text-xs text-cofounder-charcoal">
+                Chapter / For Individuals
+              </div>
+            </div>
+            {/* Claude welcomes you into the Community, the Co-Founder zone
+                of this page. Warm cream/charcoal clay-world card, decorative,
+                no new copy. */}
+            <div className="w-20 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-2 sm:w-24">
+              <Image
+                src="/assets/claymation/claude-character-welcome.png"
+                alt="Claude character waving hello, welcoming you in"
+                width={192}
+                height={192}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
           </div>
           <h2 className="mt-4 font-display text-3xl font-semibold md:text-4xl">
             The Claude Co-Founder Community.

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import IssueHeader from "@/components/ui/IssueHeader";
@@ -43,14 +44,29 @@ export default function Page() {
 
       <ScrollReveal as="section" className="border-b border-gaip-black">
         <div className="mx-auto max-w-editorial px-6 py-20 md:py-28">
-          <p className="eyebrow text-gaip-teal">RESULTS</p>
-          <h1 className="mt-4 font-display text-5xl font-semibold leading-tight text-gaip-black md:text-6xl">
-            Numbers we can stand behind.
-          </h1>
-          <p className="mt-6 max-w-prose font-body text-lg text-gaip-black/80 md:text-xl">
-            We publish figures when clients confirm them, not before. Because
-            credibility is the whole point.
-          </p>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="eyebrow text-gaip-teal">RESULTS</p>
+              <h1 className="mt-4 font-display text-5xl font-semibold leading-tight text-gaip-black md:text-6xl">
+                Numbers we can stand behind.
+              </h1>
+              <p className="mt-6 max-w-prose font-body text-lg text-gaip-black/80 md:text-xl">
+                We publish figures when clients confirm them, not before.
+                Because credibility is the whole point.
+              </p>
+            </div>
+            {/* Trophy character beside the standfirst. Warm cream/charcoal
+                clay-world card, decorative, no new copy. */}
+            <div className="w-20 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-2 sm:w-28">
+              <Image
+                src="/assets/claymation/claude-character-trophy.png"
+                alt="Claude character holding a trophy"
+                width={224}
+                height={224}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
+          </div>
         </div>
       </ScrollReveal>
 
