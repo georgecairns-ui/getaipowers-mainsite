@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact - Get AI Powers",
+  description:
+    "Book a 30-minute Claude Readiness Session with George Cairns to find where Claude can hand your team its hours back.",
+};
+
+/**
+ * Contact page.
+ *
+ * Its only job is converting: structure palette (white / black / teal),
+ * minimal animation, no heavy assets, fast load. No ScrollReveal, no
+ * Starburst.
+ */
+export default function Page() {
+  return (
+    <main className="bg-gaip-white text-gaip-black">
+      <section className="mx-auto max-w-editorial px-6 py-16 sm:py-20">
+        <p className="eyebrow text-gaip-black">Contact</p>
+        <h1 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
+          Book a Claude Readiness Session.
+        </h1>
+        <p className="mt-6 max-w-prose font-body text-lg text-gaip-black/80">
+          30 minutes with George. We&rsquo;ll look at where Claude can hand
+          your team its hours back, because that&rsquo;s the quickest way
+          to find out if we can help.
+        </p>
+
+        {/* George: this embeds the "Claude - Quick Wins" 30-min event. Confirm or replace with a dedicated Claude Readiness Session event type. */}
+        <div className="mt-10 border border-gaip-black">
+          <iframe
+            src="https://calendly.com/george-cairns-getaipowers/claude-quick-wins?hide_gdpr_banner=1"
+            title="Book a Claude Readiness Session with George Cairns"
+            width="100%"
+            style={{ minHeight: "760px", border: "none", display: "block" }}
+            loading="lazy"
+          />
+        </div>
+
+        <p className="mt-6 font-body text-sm text-gaip-black/70">
+          Prefer email?{" "}
+          <a
+            href="mailto:george.cairns@getaipowers.com"
+            className="text-gaip-black underline decoration-gaip-teal decoration-2 underline-offset-4 transition-colors duration-200 hover:decoration-gaip-teal-dark"
+          >
+            george.cairns@getaipowers.com
+          </a>
+        </p>
+      </section>
+    </main>
+  );
+}
