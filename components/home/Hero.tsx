@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Starburst from "@/components/ui/Starburst";
 import InteractiveHalftone from "@/components/ui/InteractiveHalftone";
+import SpeechBubble from "@/components/ui/SpeechBubble";
+import PressureHeadline from "@/components/ui/PressureHeadline";
 
 /**
  * Hero - the comic splash page.
@@ -170,43 +171,36 @@ export default function Hero() {
         {/* Text column - solid white backing so body copy never sits on the
             halftone field. */}
         <div ref={headlineRef} className="relative">
-          <div className="relative bg-gaip-white px-6 py-8 sm:px-8 sm:py-10">
-            {/* Full-opacity teal action burst settling behind the headline. */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-16 -top-20 z-0"
-            >
-              <Starburst size={640} colour="teal" />
-            </div>
+          {/* Small black speed-line accents above the bubble. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-8 right-4 z-10 hidden gap-1.5 sm:flex sm:flex-col"
+          >
+            <span className="block h-0.5 w-10 -rotate-12 bg-gaip-black" />
+            <span className="block h-0.5 w-7 -rotate-12 bg-gaip-black" />
+            <span className="block h-0.5 w-12 -rotate-12 bg-gaip-black" />
+            <span className="block h-0.5 w-6 -rotate-12 bg-gaip-black" />
+          </div>
 
-            {/* Small black speed-line accents. */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-2 top-6 z-0 hidden gap-1.5 sm:flex sm:flex-col"
-            >
-              <span className="block h-0.5 w-10 -rotate-12 bg-gaip-black" />
-              <span className="block h-0.5 w-7 -rotate-12 bg-gaip-black" />
-              <span className="block h-0.5 w-12 -rotate-12 bg-gaip-black" />
-              <span className="block h-0.5 w-6 -rotate-12 bg-gaip-black" />
-            </div>
-
-            <h1 className="relative z-10 font-display text-5xl font-bold leading-[0.95] tracking-tight text-gaip-black sm:text-7xl lg:text-8xl">
-              We get people off the computer.
-            </h1>
-            <p className="relative z-10 mt-6 max-w-prose font-body text-lg leading-relaxed text-gaip-black/80">
+          {/* The headline lives inside a massive comic speech bubble whose
+              tail points at the hero - this is his line. */}
+          <SpeechBubble>
+            <PressureHeadline />
+            <p className="mt-6 max-w-prose font-body text-lg leading-relaxed text-gaip-black/80">
               Businesses don&rsquo;t grow through a screen. They grow through
               relationships. Claude takes care of the admin so you can spend
               your time with the people who actually grow your business.
             </p>
-            {/* CTA with a teal offset shadow that collapses on hover - the
-                button physically presses down and to the right. */}
-            <a
-              href="#philosophy"
-              className="relative z-10 mt-8 inline-block translate-x-0 translate-y-0 bg-gaip-black px-7 py-4 font-body text-sm font-medium text-gaip-white shadow-[5px_5px_0_#00B0BE] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-gaip-teal hover:text-gaip-white hover:shadow-[2px_2px_0_#00B0BE]"
-            >
-              See how it works
-            </a>
-          </div>
+          </SpeechBubble>
+
+          {/* CTA below the bubble, with a teal offset shadow that collapses
+              on hover - the button physically presses down and to the right. */}
+          <a
+            href="#philosophy"
+            className="relative z-10 ml-7 mt-8 inline-block translate-x-0 translate-y-0 bg-gaip-black px-7 py-4 font-body text-sm font-medium text-gaip-white shadow-[5px_5px_0_#00B0BE] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-gaip-teal hover:text-gaip-white hover:shadow-[2px_2px_0_#00B0BE]"
+          >
+            See how it works
+          </a>
         </div>
 
         {/* Art slot: large tilted comic panel, right ~55% on desktop. Sized
