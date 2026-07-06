@@ -21,7 +21,7 @@ const TESTIMONIAL_STYLE = [
  */
 export default function AuthorityStrip() {
   return (
-    <section className="overflow-hidden bg-gaip-white">
+    <section className="comic-flood-yellow overflow-hidden">
       <div className="mx-auto max-w-editorial px-6 py-20 lg:py-24">
         <ScrollReveal>
           <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">

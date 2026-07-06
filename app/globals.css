@@ -130,6 +130,86 @@ body {
   );
 }
 
+/* --- FULL COMIC devices (2026-07-06 direction) --------------------------- */
+/*
+ * The dial is now full comic book. Action colours may flood panels and section
+ * backdrops. Black linework and gutters still frame everything - that is what
+ * keeps this a comic page and not chaos. Every effect below is flat: no blur,
+ * glow or gradient shadow. Body copy always sits on a solid white/black panel,
+ * never directly on a flood.
+ */
+
+/* Coloured halftone dot fields at visible comic strength. Siblings of
+   .halftone-teal-strong. Sit behind panels and display elements, never under
+   body copy. */
+.halftone-yellow {
+  background-image: radial-gradient(circle, #ffc72c 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.25;
+}
+
+.halftone-orange {
+  background-image: radial-gradient(circle, #ff7a2f 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.25;
+}
+
+.halftone-green {
+  background-image: radial-gradient(circle, #52b788 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.25;
+}
+
+/* Ben-Day misregistration: two dot layers, yellow and teal, offset by half a
+   cell so the plates read as "off register" like a cheaply printed comic. */
+.benday-duo {
+  background-image:
+    radial-gradient(circle, rgba(255, 199, 44, 0.6) 2px, transparent 2px),
+    radial-gradient(circle, rgba(0, 176, 190, 0.55) 2px, transparent 2px);
+  background-size: 14px 14px, 14px 14px;
+  background-position: 0 0, 7px 7px;
+  opacity: 0.3;
+}
+
+/* Section backdrop floods: a solid action colour plus a faint black halftone
+   overlay printed on top. Panels sit on these; body copy never does. */
+.comic-flood-yellow {
+  background-color: #ffc72c;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.comic-flood-orange {
+  background-color: #ff7a2f;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.comic-flood-teal {
+  background-color: #00b0be;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.comic-flood-green {
+  background-color: #52b788;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+/* Chromatic aberration on DISPLAY headlines only: a teal/orange text-shadow
+   pair with zero blur - the CMYK misregistration feel. Never on body copy
+   (it would wreck the 4.5:1 contrast the ink relies on). */
+.chromatic-text {
+  text-shadow: 2px 0 0 #00b0be, -2px 0 0 #ff7a2f;
+}
+
+/* The comic page frame: a thick black outer border around a main content
+   wrapper - the printed page edge. */
+.gutter-page {
+  border: 6px solid var(--gaip-black);
+}
+
 /* --- Motion hygiene ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

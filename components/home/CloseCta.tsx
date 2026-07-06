@@ -30,8 +30,8 @@ export default function CloseCta() {
                 className="pointer-events-none absolute -top-24 right-4 z-0 hidden rotate-[-6deg] lg:-right-8 xl:block"
               >
                 <div className="relative flex items-center justify-center">
-                  <Starburst size={190} colour="red" animate={false} />
-                  <span className="absolute font-display text-3xl font-bold uppercase tracking-tight text-gaip-white">
+                  <Starburst size={190} colour="yellow" animate={false} />
+                  <span className="absolute font-display text-3xl font-bold uppercase tracking-tight text-gaip-black">
                     Pow!
                   </span>
                 </div>

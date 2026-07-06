@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import CinematicPanel from "@/components/ui/CinematicPanel";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import IssueHeader from "@/components/ui/IssueHeader";
+import Starburst from "@/components/ui/Starburst";
 import {
   BrainIcon,
   LightningIcon,
@@ -51,6 +54,26 @@ const DELIVERY = [
     body: "Locks the learning in between sessions and shows us who your champions are.",
     Icon: StarIcon,
   },
+];
+
+// Hand-laid tilt + landing shadow colour for the "how it's delivered" comic
+// grid. 2 panels land yellow, 1 orange, 1 keeps comic-panel-bold's own black
+// shadow - never uniform, never all the same colour.
+const DELIVERY_STYLE = [
+  { tilt: "-rotate-1", shadow: "#FFC72C" },
+  { tilt: "rotate-1", shadow: "#FFC72C" },
+  { tilt: "-rotate-[0.6deg]", shadow: "#FF7A2F" },
+  { tilt: "rotate-[0.6deg]", shadow: null },
+] as const;
+
+// Flood colour behind each phase number, in page rotation.
+const PHASE_FLOODS = [
+  "comic-flood-yellow",
+  "comic-flood-teal",
+  "comic-flood-orange",
+  "comic-flood-green",
+  "comic-flood-yellow",
+  "comic-flood-teal",
 ];
 
 const PHASES = [
@@ -108,6 +131,8 @@ const TRACK_RECORD = [
 export default function Page() {
   return (
     <main>
+      <IssueHeader issue="Issue 03" title="Our services" no="No. 3" />
+
       {/* Header */}
       <ScrollReveal as="section" className="border-b border-gaip-black">
         <div className="mx-auto max-w-editorial px-6 py-20 md:py-28">
@@ -124,9 +149,41 @@ export default function Page() {
         </div>
       </ScrollReveal>
 
+      {/* Cinematic splash panel */}
+      <section className="mx-auto max-w-editorial px-6 pb-16 md:pb-20">
+        <div className="relative">
+          <ScrollReveal
+            variant="panel"
+            finalRotate={-1}
+            shadowColor="#000000"
+            className="comic-panel-bold relative overflow-hidden"
+          >
+            <CinematicPanel
+              videoSrc="/assets/higgsfield/squad-loop.mp4"
+              posterSrc="/assets/higgsfield/squad-poster.jpg"
+              alt="The Get AI Powers team striding through a wall of broken monitors, comic style"
+              className="w-full"
+            />
+          </ScrollReveal>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-4 -top-4 z-10 rotate-12 sm:-right-6 sm:-top-6"
+          >
+            <Starburst size={72} colour="yellow" animate={false} />
+          </div>
+        </div>
+      </section>
+
       {/* Why teams need it */}
-      <ScrollReveal as="section" className="bg-gaip-black text-gaip-white">
-        <div className="mx-auto max-w-editorial px-6 py-16 md:py-24">
+      <ScrollReveal
+        as="section"
+        className="relative overflow-hidden bg-gaip-black text-gaip-white"
+      >
+        <div
+          aria-hidden="true"
+          className="halftone-orange pointer-events-none absolute -right-24 -top-24 h-72 w-72 rotate-12"
+        />
+        <div className="relative mx-auto max-w-editorial px-6 py-16 md:py-24">
           <h2 className="font-display text-3xl font-semibold md:text-4xl">
             Why teams need it.
           </h2>
@@ -171,10 +228,15 @@ export default function Page() {
             How it&rsquo;s delivered
           </p>
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {DELIVERY.map(({ title, body, Icon }) => (
+            {DELIVERY.map(({ title, body, Icon }, i) => (
               <div
                 key={title}
-                className="flex flex-col gap-3 border-t-2 border-gaip-black pt-4"
+                className={`comic-panel-bold flex flex-col gap-3 p-6 ${DELIVERY_STYLE[i].tilt}`}
+                style={
+                  DELIVERY_STYLE[i].shadow
+                    ? { boxShadow: `6px 6px 0 ${DELIVERY_STYLE[i].shadow}` }
+                    : undefined
+                }
               >
                 <Icon className="h-8 w-8 text-gaip-teal" />
                 <span className="font-display text-lg font-semibold text-gaip-black">
@@ -192,9 +254,11 @@ export default function Page() {
             The 12-week framework
           </p>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {PHASES.map(({ number, name, weeks }) => (
+            {PHASES.map(({ number, name, weeks }, i) => (
               <div key={number} className="comic-panel flex flex-col gap-3 p-4">
-                <span className="font-mono text-xs text-gaip-black/50">
+                <span
+                  className={`${PHASE_FLOODS[i]} inline-flex h-7 w-7 items-center justify-center border-2 border-gaip-black font-mono text-xs font-bold text-gaip-black`}
+                >
                   {number.padStart(2, "0")}
                 </span>
                 <span className="font-display text-base font-semibold leading-snug text-gaip-black">
@@ -282,6 +346,9 @@ export default function Page() {
       >
         <div className="mx-auto max-w-editorial px-6 py-16 md:py-24">
           <p className="eyebrow text-cofounder-ink-soft">FOR INDIVIDUALS</p>
+          <div className="narration-box mt-4 inline-block px-4 py-2 text-xs text-cofounder-charcoal">
+            Chapter / For Individuals
+          </div>
           <h2 className="mt-4 font-display text-3xl font-semibold md:text-4xl">
             The Claude Co-Founder Community.
           </h2>
@@ -303,14 +370,14 @@ export default function Page() {
       </ScrollReveal>
 
       {/* Track record */}
-      <ScrollReveal as="section">
+      <ScrollReveal as="section" className="comic-flood-green">
         <div className="mx-auto max-w-editorial px-6 py-16 md:py-24">
-          <p className="eyebrow text-gaip-black/60">TRACK RECORD</p>
+          <p className="eyebrow text-gaip-black">TRACK RECORD</p>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
             {TRACK_RECORD.map(({ value, caption }) => (
               <div
                 key={value}
-                className="comic-panel flex flex-col gap-4 p-8"
+                className="comic-panel-bold flex flex-col gap-4 p-8"
               >
                 <span className="font-display text-6xl font-bold leading-none text-gaip-black md:text-7xl">
                   {value}

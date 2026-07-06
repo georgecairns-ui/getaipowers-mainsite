@@ -38,11 +38,16 @@ export default {
           charcoal: "#191919",
           "ink-soft": "#40403E",
         },
-        // Layer 3: ACTION (comic accents inside illustration work only)
+        // Layer 3: ACTION - George's 2026-07-06 direction: full comic colour.
+        // Yellows, oranges and greens joined the palette and action colours
+        // may now flood panels and section backdrops, not just devices. The
+        // discipline that remains: black linework and gutters frame all of it.
         action: {
           red: "#E63946",
           blue: "#3A86FF",
           green: "#52B788",
+          yellow: "#FFC72C",
+          orange: "#FF7A2F",
           grey: "#6C757D",
           beige: "#F5E6D3",
         },

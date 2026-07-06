@@ -12,9 +12,15 @@ export default function Philosophy() {
   return (
     <section
       id="philosophy"
-      className="overflow-hidden bg-gaip-black text-gaip-white"
+      className="relative overflow-hidden bg-gaip-black text-gaip-white"
     >
-      <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
+      {/* Orange halftone corner band, top-right. Decorative, behind content. */}
+      <div
+        aria-hidden="true"
+        className="halftone-orange pointer-events-none absolute -right-10 -top-10 h-56 w-72 rotate-12"
+      />
+
+      <div className="relative mx-auto max-w-editorial px-6 py-24 lg:py-32">
         <ScrollReveal>
           <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">
             Chapter 02 / The Philosophy

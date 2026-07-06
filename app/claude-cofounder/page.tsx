@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import IssueHeader from "@/components/ui/IssueHeader";
 import StepCard from "@/components/cofounder/StepCard";
 
 export const metadata: Metadata = {
@@ -37,6 +38,16 @@ const STEPS = [
   },
 ];
 
+// Hand-laid tilt per step card. Charcoal shadows land with them (see
+// StepCard), never the structure-black or action-colour shadows used
+// elsewhere on the site.
+const STEP_TILTS = [
+  "-rotate-1",
+  "rotate-1",
+  "-rotate-[0.6deg]",
+  "rotate-[0.6deg]",
+];
+
 /**
  * Claude Co-Founder landing page.
  *
@@ -47,6 +58,15 @@ const STEPS = [
 export default function Page() {
   return (
     <main className="bg-cofounder-cream text-cofounder-charcoal">
+      {/* IssueHeader has no className hook to retint it off pure black, so it
+          renders as-is per the brief - the one page where its masthead sits
+          slightly outside the warmth palette. */}
+      <IssueHeader
+        issue="Issue 07"
+        title="Your AI co-founder"
+        no="No. 7"
+      />
+
       {/* Hero */}
       <section className="mx-auto max-w-editorial px-6 py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -93,7 +113,7 @@ export default function Page() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.05}>
-                <StepCard {...step} />
+                <StepCard {...step} tilt={STEP_TILTS[index]} />
               </ScrollReveal>
             ))}
           </div>
@@ -105,9 +125,9 @@ export default function Page() {
         <div className="mx-auto max-w-editorial">
           <ScrollReveal>
             <div className="border border-cofounder-charcoal bg-cofounder-sand p-8 sm:p-12">
-              <p className="eyebrow text-cofounder-ink-soft">
+              <div className="-rotate-1 inline-block border-2 border-cofounder-charcoal bg-cofounder-cream px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-cofounder-charcoal">
                 A note from the founders
-              </p>
+              </div>
               <p className="mt-6 max-w-prose font-body text-lg leading-relaxed text-cofounder-charcoal">
                 We built Claude Co-Founder because we watched too many
                 business owners pay agencies for automations they could

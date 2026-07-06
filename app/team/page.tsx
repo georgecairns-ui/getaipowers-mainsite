@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import IssueHeader from "@/components/ui/IssueHeader";
 
 export const metadata: Metadata = {
   title: "Team - Get AI Powers",
@@ -42,9 +43,28 @@ const TEAM = [
   },
 ];
 
+// Photo-placeholder texture cycles through these 4 so no 2 adjacent cards
+// match. Card tilt alternates independently.
+const PHOTO_BG = [
+  "halftone-yellow",
+  "halftone-orange",
+  "halftone-green",
+  "halftone-strong",
+];
+const TILTS = [
+  "-rotate-1",
+  "rotate-1",
+  "-rotate-[0.6deg]",
+  "rotate-[0.6deg]",
+  "-rotate-1",
+  "rotate-1",
+];
+
 export default function Page() {
   return (
     <main>
+      <IssueHeader issue="Issue 05" title="The people" no="No. 5" />
+
       <ScrollReveal as="section" className="border-b border-gaip-black">
         <div className="mx-auto max-w-editorial px-6 py-20 md:py-28">
           <p className="eyebrow text-gaip-teal">TEAM</p>
@@ -58,13 +78,19 @@ export default function Page() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal as="section">
+      <ScrollReveal as="section" className="comic-flood-teal">
         <div className="mx-auto max-w-editorial px-6 py-16 md:py-24">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map(({ name, role, initials, note }) => (
-              <div key={name} className="comic-panel flex flex-col">
-                <div className="relative aspect-square overflow-hidden border-b-2 border-gaip-black bg-gaip-teal-light">
-                  <div className="halftone absolute inset-0" />
+            {TEAM.map(({ name, role, initials, note }, i) => (
+              <div
+                key={name}
+                className={`comic-panel-bold flex flex-col ${TILTS[i]}`}
+              >
+                <div className="relative aspect-square overflow-hidden border-b-2 border-gaip-black bg-gaip-white">
+                  <div
+                    aria-hidden="true"
+                    className={`${PHOTO_BG[i % PHOTO_BG.length]} absolute inset-0`}
+                  />
                   <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2">
                     <span className="font-display text-5xl font-semibold text-gaip-black">
                       {initials}

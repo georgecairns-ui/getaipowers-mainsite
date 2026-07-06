@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import IssueHeader from "@/components/ui/IssueHeader";
 
 export const metadata: Metadata = {
   title: "Contact - Get AI Powers",
@@ -16,11 +17,20 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="bg-gaip-white text-gaip-black">
+      <IssueHeader
+        issue="Issue 06"
+        title="Book a Claude Quick Wins Session"
+        no="No. 6"
+      />
       <section className="mx-auto max-w-editorial px-6 py-16 sm:py-20">
         <p className="eyebrow text-gaip-black">Contact</p>
         <h1 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
           Book a Claude Quick Wins Session.
         </h1>
+        <div
+          aria-hidden="true"
+          className="benday-duo mt-6 h-3 w-full max-w-prose"
+        />
         <p className="mt-6 max-w-prose font-body text-lg text-gaip-black/80">
           30 minutes with George. We&rsquo;ll look at where Claude can hand
           your team its hours back, because that&rsquo;s the quickest way

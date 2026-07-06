@@ -11,7 +11,7 @@ export default function PullQuote() {
     <section className="bg-gaip-white">
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
         <ScrollReveal>
-          <p className="pull-quote max-w-4xl text-3xl leading-tight text-gaip-black sm:text-4xl lg:text-5xl">
+          <p className="pull-quote chromatic-text max-w-4xl text-3xl leading-tight text-gaip-black sm:text-4xl lg:text-5xl">
             We get people off the computer. That&rsquo;s not a tagline.
             That&rsquo;s the whole business.
           </p>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Starburst from "@/components/ui/Starburst";
 import ComicStrip from "@/components/about/ComicStrip";
+import IssueHeader from "@/components/ui/IssueHeader";
 
 export const metadata: Metadata = {
   title: "About - Get AI Powers",
@@ -13,14 +14,16 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="pb-28">
-      {/* Page header: teal halftone band behind, Starburst settling behind the H1 */}
+      <IssueHeader issue="Issue 02" title="How we got here" no="No. 2" />
+
+      {/* Page header: Ben-Day misregistration band behind, Starburst settling behind the H1 */}
       <section className="relative overflow-hidden">
-        {/* Visible teal halftone band across the header area. It stops above
+        {/* Visible Ben-Day duo band across the header area. It stops above
             the standfirst, because the strong halftone sits behind display
             elements, never directly under body copy. */}
         <div
           aria-hidden="true"
-          className="halftone-teal-strong pointer-events-none absolute inset-x-0 top-0 h-56 md:h-72"
+          className="benday-duo pointer-events-none absolute inset-x-0 top-0 h-56 md:h-72"
         />
         <div className="relative mx-auto max-w-editorial px-6 pt-16 md:pt-24">
           <ScrollReveal>
@@ -53,7 +56,7 @@ export default function Page() {
       {/* Closing pull quote, outside the panels */}
       <section className="mx-auto max-w-editorial px-6">
         <ScrollReveal>
-          <blockquote className="pull-quote mt-20 max-w-3xl text-2xl text-gaip-black md:mt-28 md:text-3xl">
+          <blockquote className="pull-quote chromatic-text mt-20 max-w-3xl text-2xl text-gaip-black md:mt-28 md:text-3xl">
             This isn&apos;t about replacing people with AI. It&apos;s the
             opposite. It&apos;s giving people back the hours AI can legitimately
             take off their plate, so they can spend that time on the parts of

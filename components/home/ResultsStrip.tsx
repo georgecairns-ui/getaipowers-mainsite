@@ -38,7 +38,7 @@ const PANEL_STYLE = [
  */
 export default function ResultsStrip() {
   return (
-    <section className="overflow-hidden bg-gaip-white">
+    <section className="comic-flood-teal overflow-hidden">
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
         <ScrollReveal>
           <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">

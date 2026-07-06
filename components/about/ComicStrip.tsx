@@ -20,6 +20,8 @@ interface Panel {
   artPosition: string;
   /** Hand-laid tilt on the panel container - alternating tiny rotations. */
   tilt: string;
+  /** Flood colour zone this panel is printed on, in page rotation. */
+  flood: string;
 }
 
 /**
@@ -43,6 +45,7 @@ const PANELS: Panel[] = [
     alt: "Comic panel 1: the agency team building bespoke automation machines for clients.",
     artPosition: "0% 0%",
     tilt: "-rotate-1",
+    flood: "comic-flood-yellow",
   },
   {
     n: 2,
@@ -51,6 +54,7 @@ const PANELS: Panel[] = [
     alt: "Comic panel 2: a business owner builds the same automation themselves by talking into their phone.",
     artPosition: "100% 0%",
     tilt: "rotate-[0.5deg]",
+    flood: "comic-flood-teal",
   },
   {
     n: 3,
@@ -59,6 +63,7 @@ const PANELS: Panel[] = [
     alt: "Comic panel 3: an invoice for tens of thousands of pounds that no longer feels honest.",
     artPosition: "0% 100%",
     tilt: "-rotate-[0.5deg]",
+    flood: "comic-flood-orange",
   },
   {
     n: 4,
@@ -67,6 +72,7 @@ const PANELS: Panel[] = [
     alt: "Comic panel 4: the pivot to coaching, teaching business owners to build with Claude themselves.",
     artPosition: "100% 100%",
     tilt: "rotate-1",
+    flood: "comic-flood-green",
   },
 ];
 
@@ -201,13 +207,20 @@ export default function ComicStrip() {
       {PANELS.map((panel) => {
         const warmth = panel.tone === "warmth";
         return (
-          <article
+          // Each panel is printed on its own flood colour zone, in page
+          // rotation (yellow, teal, orange, green), so the grid reads like a
+          // colour-blocked comic page. The white/cream panel keeps all body
+          // copy on a solid backing - text never sits on the flood itself.
+          <div
             key={panel.n}
-            data-panel
-            className={`comic-panel-bold relative flex flex-col ${panel.tilt}`}
-            style={warmth ? { backgroundColor: COFOUNDER_CREAM } : undefined}
+            className={`${panel.flood} border-[3px] border-gaip-black p-5 md:p-6`}
           >
-            <div className="flex h-full flex-col p-6 md:p-8">
+            <article
+              data-panel
+              className={`comic-panel-bold relative flex h-full flex-col ${panel.tilt}`}
+              style={warmth ? { backgroundColor: COFOUNDER_CREAM } : undefined}
+            >
+              <div className="flex h-full flex-col p-6 md:p-8">
               {/* Numbered narration box, top-left. */}
               <div
                 data-narration
@@ -247,8 +260,9 @@ export default function ComicStrip() {
               >
                 {panel.copy}
               </p>
-            </div>
-          </article>
+              </div>
+            </article>
+          </div>
         );
       })}
     </div>
