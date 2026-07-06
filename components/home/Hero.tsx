@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import InteractiveHalftone from "@/components/ui/InteractiveHalftone";
 import SpeechBubble from "@/components/ui/SpeechBubble";
 import PressureHeadline from "@/components/ui/PressureHeadline";
-import Starburst from "@/components/ui/Starburst";
 
 /**
  * Hero - the comic splash page.
@@ -152,20 +151,6 @@ export default function Hero() {
         aria-hidden="true"
         className="benday-duo pointer-events-none absolute inset-y-0 right-0 -z-20 hidden w-1/2 lg:block"
       />
-
-      {/* Two floating mini action bursts at the hero edges. Decorative. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-6 top-24 -z-10 hidden -rotate-6 sm:block"
-      >
-        <Starburst size={72} colour="yellow" animate={false} />
-      </div>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-16 right-8 -z-10 hidden rotate-6 sm:block"
-      >
-        <Starburst size={84} colour="orange" animate={false} />
-      </div>
 
       {/* Gutter frame: 4 black bars that grow in from the edges on scroll.
           Rendered flat (scale 0) at rest so the static splash stays open. */}

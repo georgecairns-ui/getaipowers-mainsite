@@ -1,5 +1,5 @@
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import Starburst from "@/components/ui/Starburst";
 
 interface Stat {
   value: string;
@@ -32,17 +32,29 @@ const PANEL_STYLE = [
 /**
  * ResultsStrip - CHAPTER 05 / THE RESULTS.
  *
- * Three stat panels that snap into place as bold comic panels. The lead "34"
- * carries a small red action burst behind the numeral. The page's single
- * onomatopoeia lives in CloseCta, not here.
+ * Three stat panels that snap into place as bold comic panels, with the
+ * trophy character as a small warm accent beside the results.
  */
 export default function ResultsStrip() {
   return (
     <section className="comic-flood-teal overflow-hidden">
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
         <ScrollReveal>
-          <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">
-            Chapter 05 / The Results
+          <div className="flex items-center justify-between gap-4">
+            <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">
+              Chapter 05 / The Results
+            </div>
+            {/* Trophy character: a small warm accent celebrating the results.
+                Cream/charcoal clay-world card, not the loud comic frame. */}
+            <div className="w-20 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-2 sm:w-24">
+              <Image
+                src="/assets/claymation/claude-character-trophy.png"
+                alt="Claude character holding a trophy"
+                width={192}
+                height={192}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
           </div>
         </ScrollReveal>
 
@@ -62,15 +74,6 @@ export default function ResultsStrip() {
                 className="halftone--teal pointer-events-none absolute -right-6 -top-6 h-24 w-24"
               />
               <div className="relative inline-block">
-                {/* Red action burst behind the lead numeral only. */}
-                {i === 0 && (
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -left-5 -top-5 z-0"
-                  >
-                    <Starburst size={104} colour="red" animate={false} />
-                  </div>
-                )}
                 <p className="relative z-10 font-display text-6xl font-bold leading-none text-gaip-black sm:text-7xl">
                   {stat.value}
                 </p>

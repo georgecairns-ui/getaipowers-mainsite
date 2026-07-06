@@ -15,7 +15,7 @@ export default function Home() {
     <main>
       <IssueHeader
         issue="Issue 01"
-        title="We get people off the computer"
+        title="Get AI Powers, bringing you Claude Co-Founder"
         no="No. 1"
       />
       <Hero />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ElectricBorder from "@/components/ElectricBorder";
 
@@ -51,8 +52,25 @@ export default function AuthorityStrip() {
           </div>
         </ScrollReveal>
 
+        {/* Claude welcomes the testimonials in, like a host introducing the
+            guests. Warm cream/charcoal clay-world card, not the loud comic
+            frame. Decorative host gesture, no new copy. */}
+        <ScrollReveal delay={0.08}>
+          <div className="mt-16 flex justify-center md:justify-start">
+            <div className="w-24 shrink-0 rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-2 sm:w-28">
+              <Image
+                src="/assets/claymation/claude-character-welcome.png"
+                alt="Claude character waving hello, welcoming you in"
+                width={256}
+                height={256}
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+
         {/* Testimonials as snapping comic panels. */}
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <div className="mt-10 grid gap-10 md:grid-cols-3">
           {TESTIMONIAL_STYLE.map((style, i) => (
             <ScrollReveal
               key={i}

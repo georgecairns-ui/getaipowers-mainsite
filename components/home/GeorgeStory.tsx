@@ -37,6 +37,13 @@ export default function GeorgeStory() {
             </p>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal delay={0.15}>
+          <blockquote className="pull-quote mt-16 max-w-prose text-2xl text-gaip-black sm:text-3xl">
+            AI isn&rsquo;t here to take your job. It&rsquo;s here to hand you back
+            the hours your job stole.
+          </blockquote>
+        </ScrollReveal>
       </div>
     </section>
   );

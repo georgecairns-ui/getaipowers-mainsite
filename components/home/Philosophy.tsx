@@ -51,18 +51,15 @@ export default function Philosophy() {
             </svg>
 
             <ScrollReveal
-              variant="panel"
               delay={0.1}
-              finalRotate={1}
-              shadowColor="#FFFFFF"
-              className="comic-panel-bold p-3"
+              className="rounded-2xl border-2 border-cofounder-charcoal bg-cofounder-cream p-3"
             >
               <Image
                 src="/assets/claymation/claude-character-thinking.png"
-                alt="Claude character thinking"
+                alt="Claude character thinking through a problem with you"
                 width={512}
                 height={512}
-                className="h-auto w-full"
+                className="h-auto w-full rounded-lg"
               />
             </ScrollReveal>
           </div>
