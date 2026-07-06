@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import StaggeredMenu from "@/components/StaggeredMenu";
 
 const NAV_LINKS = [
   { href: "/about", label: "About" },
@@ -13,40 +13,32 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
+const MENU_ITEMS = [
+  ...NAV_LINKS.map((l) => ({
+    label: l.label,
+    ariaLabel: `Go to ${l.label}`,
+    link: l.href,
+  })),
+  {
+    label: "Book a Session",
+    ariaLabel: "Book a Claude Quick Wins Session",
+    link: "/contact",
+  },
+];
+
 /**
  * Nav
  *
  * Sticky editorial top navigation. Desktop shows the logo, links and a
- * CTA in one row. Below the lg breakpoint the links collapse behind a
- * hamburger that opens a full-screen overlay.
+ * CTA in one row. Below lg the links live in the StaggeredMenu: layered
+ * yellow-then-teal panels staggering in from the right (React Bits,
+ * vendored and brand-adapted).
  */
 export default function Nav() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setIsOpen(false);
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
   return (
     <header className="sticky top-0 z-40 border-b border-gaip-black bg-gaip-white">
       <div className="mx-auto flex h-20 max-w-editorial items-center justify-between px-6">
-        <Link
-          href="/"
-          className="flex items-center"
-          onClick={() => setIsOpen(false)}
-        >
+        <Link href="/" className="flex items-center">
           <Image
             src="/assets/logo/GAIP-logo-black-teal-pop-RGB.svg"
             alt="Get AI Powers"
@@ -76,51 +68,22 @@ export default function Nav() {
           Book a Claude Quick Wins Session
         </Link>
 
-        <button
-          type="button"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen((prev) => !prev)}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-        >
-          <span
-            className={`block h-0.5 w-6 bg-gaip-black transition-transform duration-200 ${
-              isOpen ? "translate-y-2 rotate-45" : ""
-            }`}
+        {/* Mobile: the staggered comic menu (fixed overlay, renders its own
+            toggle aligned to this bar). */}
+        <div className="lg:hidden">
+          <StaggeredMenu
+            position="right"
+            items={MENU_ITEMS}
+            displaySocials={false}
+            displayItemNumbering={true}
+            colors={["#FFC72C", "#00B0BE"]}
+            accentColor="#FF7A2F"
+            menuButtonColor="#000000"
+            openMenuButtonColor="#000000"
+            changeMenuColorOnOpen={false}
+            isFixed={true}
           />
-          <span
-            className={`block h-0.5 w-6 bg-gaip-black transition-opacity duration-200 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-gaip-black transition-transform duration-200 ${
-              isOpen ? "-translate-y-2 -rotate-45" : ""
-            }`}
-          />
-        </button>
-
-        {isOpen && (
-          <div className="fixed inset-0 z-40 flex flex-col items-start justify-center gap-6 bg-gaip-white px-6 lg:hidden">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="font-display text-4xl text-gaip-black transition-colors duration-200 hover:text-gaip-teal"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="mt-4 bg-gaip-black px-6 py-4 font-body text-base text-gaip-white transition-colors duration-200 hover:bg-gaip-teal"
-            >
-              Book a Claude Quick Wins Session
-            </Link>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );
