@@ -1,6 +1,6 @@
 # What this project is
 
-The Get AI Powers agency website: a premium editorial magazine site with comic accents for the UK Claude training company. Not yet deployed; deployment target is Vercel via a GitHub repo George will provide.
+The Get AI Powers agency website: a premium editorial magazine site with comic accents for the UK Claude training company. Live preview at https://getaipowers-main.vercel.app (Vercel project getaipowers-main, prebuilt CLI deploys). The getaipowers.com domain still points at the old Wix site; cutover happens only on George's explicit go, and nothing about Wix gets cancelled until the new site is verified live on the domain.
 
 # Stack
 
@@ -16,7 +16,7 @@ The Get AI Powers agency website: a premium editorial magazine site with comic a
 - Test: `npx playwright test`
 - Lint: `npm run lint`
 - Build: `npm run build`
-- Deploy: push to main once the GitHub repo is connected in Vercel (auto-deploy).
+- Deploy: `npx vercel pull --yes --environment production && npx vercel build --prod --yes && npx vercel deploy --prebuilt --prod --yes` (remote builds hang on this account; always use the prebuilt flow). Vercel project is not git-connected yet; pushing deploys nothing until it is. GitHub repo (pending creation by George): getaipowers-main, private.
 
 # Rules for this repo
 
