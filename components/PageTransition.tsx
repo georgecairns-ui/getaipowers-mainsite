@@ -101,6 +101,7 @@ export default function PageTransition({
       <div
         ref={overlayRef}
         aria-hidden="true"
+        data-testid="page-transition-overlay"
         className="pointer-events-none fixed inset-0 z-[9999] flex"
       >
         {Array.from({ length: PANEL_COUNT }).map((_, i) => (

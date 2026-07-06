@@ -38,13 +38,15 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-gaip-black bg-gaip-white">
       <div className="mx-auto flex h-20 max-w-editorial items-center justify-between px-6">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="group relative z-50 flex items-center">
+          {/* The emblem grows dramatically on hover so people can actually
+              see it. Transform only - no layout shift. */}
           <Image
             src="/assets/logo/GAIP-logo-black-teal-pop-RGB.svg"
             alt="Get AI Powers"
             width={160}
             height={44}
-            className="h-11 w-auto"
+            className="h-12 w-auto origin-top-left transition-transform duration-300 ease-settle group-hover:scale-[3.2]"
             priority
           />
         </Link>

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const OVERLAY_SELECTOR = 'div[aria-hidden="true"].fixed.inset-0';
+const OVERLAY_SELECTOR = '[data-testid="page-transition-overlay"]';
 
 test.describe("Page transition", () => {
   test.use({ contextOptions: { reducedMotion: "no-preference" } });
