@@ -8,9 +8,15 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
  */
 export default function GeorgeStory() {
   return (
-    <section className="bg-gaip-white">
+    <section className="overflow-hidden bg-gaip-white">
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <ScrollReveal>
+          <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">
+            Chapter 04 / The Founder
+          </div>
+        </ScrollReveal>
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <ScrollReveal>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-gaip-black sm:text-5xl">
               One person who found something that worked.

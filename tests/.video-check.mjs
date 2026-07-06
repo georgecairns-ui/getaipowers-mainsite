@@ -1,0 +1,13 @@
+import { chromium } from "@playwright/test";
+const browser = await chromium.launch();
+const page = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+await page.goto("http://localhost:3111/", { waitUntil: "load" });
+await page.waitForTimeout(400);
+const before = await page.locator("video").count();
+await page.mouse.move(700, 400);
+await page.mouse.move(720, 420);
+await page.waitForTimeout(800);
+const after = await page.locator("video").count();
+const playing = after > 0 ? await page.evaluate(() => { const v = document.querySelector("video"); return v && !v.paused && v.currentTime > 0; }) : false;
+console.log(JSON.stringify({ videoBeforeInteraction: before, videoAfterInteraction: after, playing }));
+await browser.close();

@@ -14,37 +14,69 @@ interface Panel {
   n: number;
   tone: Tone;
   copy: string;
+  /** Meaningful description of this panel's quadrant of the strip artwork. */
+  alt: string;
+  /** background-position selecting this panel's quadrant of the 2x2 strip. */
+  artPosition: string;
+  /** Hand-laid tilt on the panel container - alternating tiny rotations. */
+  tilt: string;
 }
 
 /**
  * The four beats of the pivot story, verbatim. Panels 1 and 2 sit on white
  * (structure layer). Panels 3 and 4 carry the warmth layer - cream ground,
  * charcoal text, a clay accent rule - marking the moment the business changed.
+ *
+ * The artwork is a single 2000x1116 comic strip whose quadrants match the
+ * panels in order: top-left 1, top-right 2, bottom-left 3, bottom-right 4.
+ * Each slot shows its quadrant via background-size 200% 200% and a corner
+ * background-position. Slots use aspect-[1000/558] (the exact quadrant
+ * ratio, ~16:9) so the crop is pixel-true with no stretch.
  */
+const STRIP_ART = "/assets/higgsfield/about-4panel-strip.png";
+
 const PANELS: Panel[] = [
   {
     n: 1,
     tone: "structure",
     copy: "We started as an AI agency. We built bespoke automations for clients, custom integrations, one-off tools, the works.",
+    alt: "Comic panel 1: the agency team building bespoke automation machines for clients.",
+    artPosition: "0% 0%",
+    tilt: "-rotate-1",
   },
   {
     n: 2,
     tone: "structure",
     copy: "Then 2026 happened. Claude and a new generation of accessible tools meant a business owner with zero technical background could build, in about 30 minutes, by talking into their phone, what used to take us weeks and cost thousands of pounds.",
+    alt: "Comic panel 2: a business owner builds the same automation themselves by talking into their phone.",
+    artPosition: "100% 0%",
+    tilt: "rotate-[0.5deg]",
   },
   {
     n: 3,
     tone: "warmth",
     copy: "Charging someone tens of thousands of pounds for an automation that does one single thing, that they don't understand and can't maintain, stopped feeling honest the moment the same result became achievable by the client alone, for the cost of a subscription.",
+    alt: "Comic panel 3: an invoice for tens of thousands of pounds that no longer feels honest.",
+    artPosition: "0% 100%",
+    tilt: "-rotate-[0.5deg]",
   },
   {
     n: 4,
     tone: "warmth",
     copy: "So we pivoted. We built Claude Co-Founder: structured lessons, real implementation support, and a place to keep learning as Claude keeps changing, for the non-technical business owners who want their time back.",
+    alt: "Comic panel 4: the pivot to coaching, teaching business owners to build with Claude themselves.",
+    artPosition: "100% 100%",
+    tilt: "rotate-1",
   },
 ];
 
-const ILLUSTRATION_LABEL = "Illustration to come - Higgsfield 4-panel sequence";
+/**
+ * cofounder-cream, applied inline on the pivot panels. The .comic-panel-bold
+ * utility is unlayered CSS and sets a white background, which outranks
+ * Tailwind's layered bg-* utilities in the cascade, so the cream must win
+ * via inline style.
+ */
+const COFOUNDER_CREAM = "#FAFAF7";
 
 /**
  * ComicStrip
@@ -58,9 +90,13 @@ const ILLUSTRATION_LABEL = "Illustration to come - Higgsfield 4-panel sequence";
  * - Mobile: a single simpler fade-and-lift per panel, stacked.
  * - Reduced motion: everything static, nothing animates.
  *
- * The 2px black comic border is the plain CSS .comic-panel utility on the
- * panel itself, so it is guaranteed crisp in every state - no JS, reduced
- * motion, any viewport.
+ * The comic frame is the plain CSS .comic-panel-bold utility (3px black
+ * border, hard flat 6px offset shadow) on the panel itself, so it is
+ * guaranteed crisp in every state - no JS, reduced motion, any viewport.
+ * The panel's entrance fade brings the offset shadow in with it, so each
+ * panel lands with its shadow appearing as it settles. The tiny alternating
+ * rotations are static classes; GSAP decomposes the existing transform and
+ * preserves the rotation while tweening y.
  */
 export default function ComicStrip() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -168,33 +204,30 @@ export default function ComicStrip() {
           <article
             key={panel.n}
             data-panel
-            className={`comic-panel relative flex flex-col ${
-              warmth ? "bg-cofounder-cream" : "bg-gaip-white"
-            }`}
+            className={`comic-panel-bold relative flex flex-col ${panel.tilt}`}
+            style={warmth ? { backgroundColor: COFOUNDER_CREAM } : undefined}
           >
             <div className="flex h-full flex-col p-6 md:p-8">
               {/* Numbered narration box, top-left. */}
               <div
                 data-narration
-                className="self-start border border-gaip-black bg-action-beige px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gaip-black"
+                className="narration-box self-start px-3 py-1.5 text-xs text-gaip-black"
               >
                 Panel {panel.n}
               </div>
 
-              {/* Illustration slot: halftone fill with a centred label. */}
+              {/* Illustration: this panel's quadrant of the 2x2 strip art. */}
               <div
                 data-illus
-                className="relative mt-5 flex aspect-[4/3] items-center justify-center overflow-hidden border border-gaip-black"
-              >
-                <div className="halftone absolute inset-0" aria-hidden="true" />
-                <span
-                  className={`relative px-6 text-center font-mono text-[0.7rem] uppercase tracking-[0.14em] ${
-                    warmth ? "text-cofounder-ink-soft" : "text-action-grey"
-                  }`}
-                >
-                  {ILLUSTRATION_LABEL}
-                </span>
-              </div>
+                role="img"
+                aria-label={panel.alt}
+                className="mt-5 aspect-[1000/558] border-2 border-gaip-black"
+                style={{
+                  backgroundImage: `url(${STRIP_ART})`,
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: panel.artPosition,
+                }}
+              />
 
               {/* Clay accent rule on the pivot panels only. */}
               {warmth && (

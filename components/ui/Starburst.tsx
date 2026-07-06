@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-type StarburstColour = "teal" | "black" | "white";
+type StarburstColour = "teal" | "black" | "white" | "red";
 
 interface StarburstProps {
   /** Rendered width and height in px. Default 320. */
@@ -19,6 +19,8 @@ const FILL: Record<StarburstColour, string> = {
   teal: "#00B0BE",
   black: "#000000",
   white: "#FFFFFF",
+  // Action red, only ever used inside a comic device (impact burst).
+  red: "#E63946",
 };
 
 /**

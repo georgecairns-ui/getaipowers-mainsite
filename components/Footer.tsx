@@ -120,7 +120,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-2 border-t border-gaip-white/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-xs text-gaip-white/70">
-            Get AI Powers Ltd. Registered in the UK. &copy;{" "}
+            Get AI Powers Ltd. Registered in the UK since 2024. &copy;{" "}
             {new Date().getFullYear()}
           </p>
           <p className="font-mono text-xs uppercase tracking-wider text-gaip-teal">

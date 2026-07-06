@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import Starburst from "@/components/ui/Starburst";
 import ComicStrip from "@/components/about/ComicStrip";
 
 export const metadata: Metadata = {
@@ -12,18 +13,36 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="pb-28">
-      {/* Page header */}
-      <section className="mx-auto max-w-editorial px-6 pt-16 md:pt-24">
-        <ScrollReveal>
-          <p className="eyebrow text-gaip-teal">About</p>
-          <h1 className="mt-4 font-display text-5xl font-bold leading-[1.05] text-gaip-black md:text-7xl">
-            How we got here
-          </h1>
-          <p className="mt-6 max-w-prose font-body text-lg leading-relaxed text-gaip-black md:text-xl">
-            We used to build automations for clients. Then the ground moved.
-            Here&apos;s the honest version.
-          </p>
-        </ScrollReveal>
+      {/* Page header: teal halftone band behind, Starburst settling behind the H1 */}
+      <section className="relative overflow-hidden">
+        {/* Visible teal halftone band across the header area. It stops above
+            the standfirst, because the strong halftone sits behind display
+            elements, never directly under body copy. */}
+        <div
+          aria-hidden="true"
+          className="halftone-teal-strong pointer-events-none absolute inset-x-0 top-0 h-56 md:h-72"
+        />
+        <div className="relative mx-auto max-w-editorial px-6 pt-16 md:pt-24">
+          <ScrollReveal>
+            <p className="eyebrow text-gaip-teal">About</p>
+            <div className="relative">
+              {/* Full-strength teal burst settling behind the H1, offset up-left. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-16 -top-28 md:-left-20 md:-top-32"
+              >
+                <Starburst size={360} colour="teal" />
+              </div>
+              <h1 className="relative mt-4 font-display text-5xl font-bold leading-[1.05] text-gaip-black md:text-7xl">
+                How we got here
+              </h1>
+            </div>
+            <p className="relative mt-6 max-w-prose font-body text-lg leading-relaxed text-gaip-black md:text-xl">
+              We used to build automations for clients. Then the ground moved.
+              Here&apos;s the honest version.
+            </p>
+          </ScrollReveal>
+        </div>
       </section>
 
       {/* The 4-panel comic strip */}

@@ -107,11 +107,15 @@ export default function PageTransition({
           <div
             key={i}
             ref={(el) => setPanelRef(el, i)}
-            className="h-full flex-1 border-l border-gaip-teal bg-gaip-black"
+            className="h-full flex-1 border-l-2 border-gaip-teal bg-gaip-black"
             style={{
               transform: "translateY(-101%)",
               visibility: "hidden",
               willChange: "transform",
+              // Faint halftone texture over the black base.
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+              backgroundSize: "10px 10px",
             }}
           />
         ))}

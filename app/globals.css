@@ -72,6 +72,64 @@ body {
   opacity: 0.1;
 }
 
+/* --- Comic-first devices (the COMIC-FIRST dial) -------------------------- */
+/*
+ * These are the loud siblings of the accents above. The page is now a comic
+ * page, so bold panels, hard offset shadows and visible halftone are the base
+ * framing, not seasoning. Every shadow here is flat (blur 0) - never a glow.
+ */
+
+/* Standard section / card frame: heavy black border, hard flat offset shadow. */
+.comic-panel-bold {
+  border: 3px solid var(--gaip-black);
+  box-shadow: 6px 6px 0 var(--gaip-black);
+  background: var(--gaip-white);
+}
+
+/* Teal hard offset shadow (structure teal, still flat - never blurred). */
+.offset-shadow-teal {
+  box-shadow: 6px 6px 0 #00b0be;
+}
+
+/* Narration caption box: beige field, black rule, mono uppercase, hand-laid
+   tilt. Leads a major section like a comic caption. Static transform, so the
+   reduced-motion block leaves it untouched. */
+.narration-box {
+  background: #f5e6d3; /* action.beige - licensed inside a comic device */
+  border: 2px solid var(--gaip-black);
+  font-family: var(--font-jetbrains), Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transform: rotate(-1deg);
+}
+
+/* Halftone at visible comic strength (black dots). */
+.halftone-strong {
+  background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  opacity: 0.18;
+}
+
+/* Teal halftone at visible comic strength - hero field and section-header
+   bands. Sits behind panels, never directly under body copy. */
+.halftone-teal-strong {
+  background-image: radial-gradient(circle, #00b0be 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.22;
+}
+
+/* Speed lines: thin black diagonal line texture at low opacity. Radiating
+   focal variants set their own repeating-conic-gradient inline. */
+.speed-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.07) 0,
+    rgba(0, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+}
+
 /* --- Motion hygiene ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

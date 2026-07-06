@@ -20,7 +20,10 @@ export default function CofounderPanel() {
     <section className="bg-cofounder-cream text-cofounder-charcoal">
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
         <ScrollReveal>
-          <p className="eyebrow font-mono text-cofounder-ink-soft">
+          <div className="narration-box inline-block px-4 py-2 text-xs text-cofounder-charcoal">
+            Chapter 03 / The Flagship
+          </div>
+          <p className="eyebrow mt-8 font-mono text-cofounder-ink-soft">
             The flagship
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">
@@ -44,7 +47,7 @@ export default function CofounderPanel() {
         <ScrollReveal delay={0.15}>
           <Link
             href="/claude-cofounder"
-            className="mt-12 inline-block bg-cofounder-clay px-7 py-4 font-body text-sm font-medium text-cofounder-cream transition-colors duration-200 hover:bg-cofounder-clay-deep"
+            className="mt-12 inline-block translate-x-0 translate-y-0 bg-cofounder-clay px-7 py-4 font-body text-sm font-medium text-cofounder-cream shadow-[5px_5px_0_#A85842] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-cofounder-clay-deep hover:shadow-[2px_2px_0_#A85842]"
           >
             Meet Claude Co-Founder
           </Link>

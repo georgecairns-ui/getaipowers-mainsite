@@ -2,16 +2,26 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
 /**
- * Philosophy
+ * Philosophy - CHAPTER 02 / THE PHILOSOPHY.
  *
  * The black-background argument for why Claude is different. The Claude
- * character is a modest accent to the right of the text, not the focal point.
+ * character now sits in a bold comic panel with a white offset shadow and a
+ * flat white thought-bubble tail pointing at it.
  */
 export default function Philosophy() {
   return (
-    <section id="philosophy" className="bg-gaip-black text-gaip-white">
+    <section
+      id="philosophy"
+      className="overflow-hidden bg-gaip-black text-gaip-white"
+    >
       <div className="mx-auto max-w-editorial px-6 py-24 lg:py-32">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
+        <ScrollReveal>
+          <div className="narration-box inline-block px-4 py-2 text-xs text-gaip-black">
+            Chapter 02 / The Philosophy
+          </div>
+        </ScrollReveal>
+
+        <div className="mt-12 grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
           <ScrollReveal>
             <p className="max-w-prose font-display text-2xl leading-snug sm:text-3xl lg:text-4xl">
               AI was supposed to give people their time back. For most
@@ -22,8 +32,25 @@ export default function Philosophy() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <div className="mx-auto w-full max-w-[16rem] border border-gaip-white p-3 lg:mx-0">
+          <div className="relative mx-auto w-full max-w-[18rem] lg:mx-0">
+            {/* Flat white thought-bubble tail pointing at the panel. */}
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 60 40"
+              className="pointer-events-none absolute -left-6 -top-6 h-10 w-14 fill-gaip-white"
+            >
+              <circle cx="48" cy="30" r="7" />
+              <circle cx="28" cy="18" r="5" />
+              <circle cx="12" cy="8" r="3.5" />
+            </svg>
+
+            <ScrollReveal
+              variant="panel"
+              delay={0.1}
+              finalRotate={1}
+              shadowColor="#FFFFFF"
+              className="comic-panel-bold p-3"
+            >
               <Image
                 src="/assets/claymation/claude-character-thinking.png"
                 alt="Claude character thinking"
@@ -31,8 +58,8 @@ export default function Philosophy() {
                 height={512}
                 className="h-auto w-full"
               />
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
