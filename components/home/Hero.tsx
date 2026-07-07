@@ -205,7 +205,7 @@ export default function Hero() {
               on hover - the button physically presses down and to the right. */}
           <a
             href="#philosophy"
-            className="relative z-10 ml-7 mt-8 inline-block translate-x-0 translate-y-0 bg-gaip-black px-7 py-4 font-body text-sm font-medium text-gaip-white shadow-[5px_5px_0_#00B0BE] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-gaip-teal hover:text-gaip-white hover:shadow-[2px_2px_0_#00B0BE]"
+            className="relative z-10 ml-7 mt-8 inline-block translate-x-0 translate-y-0 bg-gaip-black px-7 py-4 font-body text-sm font-bold text-gaip-white shadow-[8px_8px_0_#00B0BE] transition-all duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-gaip-teal hover:text-gaip-black hover:shadow-[3px_3px_0_#00B0BE]"
           >
             See how it works
           </a>
@@ -214,7 +214,7 @@ export default function Hero() {
         {/* Art slot: large tilted comic panel, right ~55% on desktop. Sized
             16:9 to match the Higgsfield artwork and hero loop exactly. */}
         <div ref={frameRef} className="relative -rotate-1">
-          <div className="comic-panel-bold relative mx-auto aspect-video w-full max-w-2xl overflow-hidden">
+          <div className="comic-panel-bold relative mx-auto aspect-video w-full max-w-2xl overflow-hidden border-4 border-gaip-teal shadow-[12px_12px_0_#00B0BE]">
             {videoLive ? (
               <video
                 className="absolute inset-0 h-full w-full object-cover"
